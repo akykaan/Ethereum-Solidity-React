@@ -4,15 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+    "test": "mocha",
+    "dev": "next dev"
+>>>>>>> 31023fe (CRA, Next.js update)
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "@truffle/hdwallet-provider": "^1.5.1",
     "fs-extra": "^10.0.0",
     "ganache-cli": "^6.12.2",
     "mocha": "^9.1.2",
+=======
+    "@truffle/hdwallet-provider": "^1.7.0",
+    "fs-extra": "^10.0.0",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^9.1.2",
+    "next": "^12.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+>>>>>>> 31023fe (CRA, Next.js update)
     "solc": "^0.4.17",
     "web3": "^1.6.0"
   }
