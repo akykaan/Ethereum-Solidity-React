@@ -3,11 +3,12 @@ import { Button, Form, Input, Label, Message } from "semantic-ui-react";
 import Layout from "../../components/Layout";
 import factory from "../../ethereum/factory";
 import web3 from "../../ethereum/web3";
+import { Router } from "../../routes";
 
 export default function CampaignsNew() {
   const [minimumContribution, setminimumContribution] = useState("");
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setMessage();
@@ -16,16 +17,17 @@ export default function CampaignsNew() {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    setLoading(true,setMessage(""))
+    setLoading(true, setMessage(""));
     try {
       const accounts = await web3.eth.getAccounts();
       await factory.methods.createCampaign(minimumContribution).send({
         from: accounts[0],
       });
+      Router.pushRoute("/");
     } catch (error) {
       setMessage(error.message);
     }
-    setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -42,7 +44,9 @@ export default function CampaignsNew() {
           />
         </Form.Field>
         <Message error header="Oops!" content={message} />
-        <Button loading={loading} primary>Create!</Button>
+        <Button loading={loading} primary>
+          Create!
+        </Button>
       </Form>
     </Layout>
   );
