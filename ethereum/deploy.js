@@ -3,7 +3,8 @@ const Web3 = require("web3");
 const compiledFactory = require("./build/CampaignFactory.json");
 
 const provider = new HDWalletProvider(
-
+  'element winner artist minimum hope unaware rough scan siren crop ketchup warrior',
+  'https://goerli.infura.io/v3/c64dbbcd6c714aa1aaedd1f61357000d',
 );
 
 const web3 = new Web3(provider);
