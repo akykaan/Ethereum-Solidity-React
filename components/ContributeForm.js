@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input } from "semantic-ui-react";
+import { Button, Form, Input ,Message} from "semantic-ui-react";
 import Campaign from "../ethereum/campaign";
 import web3 from "../ethereum/web3";
 import { useRouter } from "next/router";
 
 export default function ContributeForm(props) {
   const [value, setValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("")
+  const [loading, setLoading] = useState(false)
   const router = useRouter();
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const campaign = Campaign(props.address);
+    setLoading(true)
+    setErrorMessage("")
     try {
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.contribute().send({
@@ -24,12 +28,14 @@ export default function ContributeForm(props) {
       // ERROR!!!!!!!
       await router.reload();
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error)
     }
+    setLoading(false)
+    value("")
   };
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} error={!!errorMessage}>
       <Form.Field>
         <label>Amount to Contribute</label>
         <Input
@@ -41,7 +47,8 @@ export default function ContributeForm(props) {
           labelPosition="right"
         />
       </Form.Field>
-      <Button primary>Contribute!</Button>
+      <Message error header={"Oops!"} content={errorMessage}/>
+      <Button primary loading={loading}>Contribute!</Button>
     </Form>
   );
 }
