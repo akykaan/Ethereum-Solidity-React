@@ -12,7 +12,9 @@ export default function index({ props }) {
       <h3>Requests</h3>
       <Link route={`/campaigns/${props.address}/requests/new`}>
         <a>
-          <Button primary>Add Request</Button>
+          <Button primary floated="right" style={{ marginBottom: 10 }}>
+            Add Request
+          </Button>
         </a>
       </Link>
 
@@ -28,12 +30,9 @@ export default function index({ props }) {
             <HeaderCell>Finalize</HeaderCell>
           </Row>
         </Header>
-        <Body>
-          <Row>
-            <Table.Cell>{renderRows(props)}</Table.Cell>
-          </Row>
-        </Body>
+        <Body>{renderRows(props)}</Body>
       </Table>
+      <div> Found { props.requestCount } requests.</div>
     </Layout>
   );
 }
@@ -42,6 +41,7 @@ index.getInitialProps = async (props) => {
   const { address } = props.query;
   const campaign = Campaign(address);
   const requestCount = await campaign.methods.getRequestsCount().call();
+  const approversCount = await campaign.methods.approversCount().call();
 
   const requests = await Promise.all(
     Array(parseInt(requestCount))
@@ -51,11 +51,19 @@ index.getInitialProps = async (props) => {
       })
   );
 
-  return { props: { address, requests, requestCount } };
+  return { props: { address, requests, requestCount, approversCount } };
 };
 
 function renderRows(props) {
   return props.requests.map((request, index) => {
-    return <RequestRow key={index} request={request} address={props.address} />;
+    return (
+      <RequestRow
+        key={index}
+        id={index}
+        request={request}
+        address={props.address}
+        approversCount={props.approversCount}
+      />
+    );
   });
 }
