@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 import Campaign from "../../ethereum/campaign";
 import web3 from "../../ethereum/web3";
 import ContributeForm from "../../components/ContributeForm";
-import { Link } from "../../routes"
+import { Link } from "../../routes";
 
 function show(props) {
   return (
@@ -12,9 +12,7 @@ function show(props) {
       <h3>Campaign Show</h3>
       <Grid>
         <Grid.Row>
-          <Grid.Column width={10}>
-            {renderCards(props)}
-          </Grid.Column>
+          <Grid.Column width={10}>{renderCards(props)}</Grid.Column>
           <Grid.Column width={6}>
             <ContributeForm address={props.address} />
           </Grid.Column>
