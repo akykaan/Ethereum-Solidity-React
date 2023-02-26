@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Image, Divider } from "semantic-ui-react";
 
-const JWT = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIzYWI0Y2E4My1mZDVlLTRkZTMtYjdhMi1hM2Q0YjJlODdkN2QiLCJlbWFpbCI6ImthYW5ha3k3N0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6IkZSQTEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX0seyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiYjU0ODQ0ZGM5ZDg4NmU0MmRkNjIiLCJzY29wZWRLZXlTZWNyZXQiOiI5ZmE4ZDJlMjEzZjhkZDc0M2JjNjlhMGMzZTMzMzU0MzdkNDZiY2YwNDE4MzY2MzYxYzVkN2Q2MjgyMmQ0ZjA2IiwiaWF0IjoxNjc3NDEyOTY2fQ.NqU9UqW-n-lFy2wrDXFtpYcA6e8kKQGcNJyAohEVExg`;
+const JWT = `Bearer `;
 
 const imageAddress = "https://ipfs.io/ipfs/";
 
@@ -84,7 +84,6 @@ function renderImageList(props) {
         key={index}
         src={imageAddress + element.ipfs_pin_hash}
         size="tiny"
-        
       />
     );
   });
