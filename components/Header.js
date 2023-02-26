@@ -13,10 +13,13 @@ export default function Header() {
           <a className="item">Campaigns</a>
         </Link>
         <Link route="/campaigns/new">
-        <a className="item">+</a>
-      </Link>
-        
+          <a className="item">+</a>
+        </Link>
       </Menu.Menu>
+
+      <Link route="/profile">
+        <a className="item">Profile Page</a>
+      </Link>
     </Menu>
   );
 }
