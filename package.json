@@ -16,7 +16,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+<<<<<<< HEAD
     "truffle": "^5.7.8",
+=======
+>>>>>>> 8145f88d2b8550e2b22abad3d1fd98fd95f5bd6d
     "web-vitals": "^2.1.4"
   },
   "scripts": {
